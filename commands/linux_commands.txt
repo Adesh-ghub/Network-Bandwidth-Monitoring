@@ -1,0 +1,50 @@
+NETWORK BANDWIDTH MONITORING USING IFTOP AND VNSTAT
+
+1. Identify the active network interface
+ip -br link
+
+Purpose:
+Displays the available network interfaces and their current status.
+The active interface used in this project is enp0s3.
+
+2. Install EPEL repository
+sudo dnf install epel-release -y
+
+Purpose:
+Enables the EPEL repository required for installing the monitoring tools.
+
+3. Install iftop and vnStat
+sudo dnf install iftop vnstat -y
+
+Purpose:
+Installs iftop for real-time network traffic monitoring and vnStat for bandwidth statistics.
+
+4. Enable and start vnStat
+sudo systemctl enable --now vnstat
+
+Purpose:
+Enables the vnStat service at system startup and starts it immediately.
+
+5. Check vnStat service
+systemctl status vnstat
+
+Purpose:
+Checks whether the vnStat service is active and running.
+
+6. Display vnStat bandwidth statistics
+vnstat -i enp0s3
+
+Purpose:
+Displays received (RX), transmitted (TX), total bandwidth, daily statistics, monthly statistics and average rate.
+
+7. Monitor real-time network traffic
+sudo iftop -i enp0s3
+
+Purpose:
+Displays active network connections and real-time incoming and outgoing traffic rates.
+
+Network Interface:
+enp0s3
+
+Operating System:
+AlmaLinux
